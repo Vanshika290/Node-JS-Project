@@ -23,7 +23,7 @@ app.use(passport.initialize());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Global Variables
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
