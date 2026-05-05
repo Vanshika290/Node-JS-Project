@@ -1,5 +1,5 @@
 const passportLocalMongoose = require('passport-local-mongoose');
-const plm = typeof passportLocalMongoose === 'function' ? passportLocalMongoose : passportLocalMongoose.default;
+
 const mongooseBase = require('mongoose');
 const Schema = mongooseBase.Schema;
 
@@ -18,6 +18,5 @@ const UserSchema = new Schema({
     }
 });
 
-UserSchema.plugin(plm);
 
 module.exports = mongooseBase.model('User', UserSchema);
