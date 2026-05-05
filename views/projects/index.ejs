@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="page-title mb-0">Project Dashboard</h1>
+    <a href="/project/new" class="btn btn-primary">Create New Project</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% for(let project of projects) { %>
+        <div class="col">
+            <div class="card glass-card h-100 p-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title fw-bold text-truncate" style="max-width: 70%;"><%= project.projectName %></h5>
+                        <span class="badge rounded-pill <%= project.status === 'Completed' ? 'bg-success' : project.status === 'In Progress' ? 'bg-warning text-dark' : 'bg-secondary' %>">
+                            <%= project.status %>
+                        </span>
+                    </div>
+                    <p class="card-text text-muted text-truncate-3"><%= project.description %></p>
+                    <div class="mb-3 small text-muted">
+                        <div class="mb-1"><strong>Deadline:</strong> <%= project.deadline.toDateString() %></div>
+                        <div><strong>Author:</strong> <%= project.author.fullName %></div>
+                    </div>
+                    <div class="d-grid">
+                        <a href="/projects/<%= project._id %>" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<% if(projects.length === 0) { %>
+    <div class="text-center py-5">
+        <h3 class="text-muted">No projects found. Create one to get started!</h3>
+    </div>
+<% } %>
+
+<style>
+    .text-truncate-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+<%- include('../partials/footer') %>

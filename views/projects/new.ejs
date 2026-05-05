@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card glass-card p-4">
+            <h2 class="page-title text-center">Create New Project</h2>
+            <form action="/project" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="projectName" class="form-label">Project Name</label>
+                    <input type="text" class="form-control" id="projectName" name="projectName" required>
+                    <div class="invalid-feedback">Please provide a project name.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    <div class="invalid-feedback">Please provide a description.</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="deadline" class="form-label">Deadline</label>
+                        <input type="date" class="form-control" id="deadline" name="deadline" required>
+                        <div class="invalid-feedback">Please choose a valid deadline.</div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a status.</div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="teamMembers" class="form-label">Team Members (comma-separated)</label>
+                    <input type="text" class="form-control" id="teamMembers" name="teamMembers" placeholder="e.g. John Doe, Jane Smith" required>
+                    <div class="invalid-feedback">Please list at least one team member.</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="/projects" class="btn btn-outline-secondary">Cancel</a>
+                    <button class="btn btn-primary px-5" type="submit">Create Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>
